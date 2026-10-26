@@ -14,7 +14,8 @@ import { validatePassword, validateUsername, verifyPassword } from './auth.js'
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 const DIST_DIR = path.resolve(HERE, '../dist')
 const PORT = Number(process.env.PORT || 8787)
-const HOST = process.env.HOST || '127.0.0.1'
+// 默认监听 0.0.0.0，云平台（Render 等）的端口扫描才能检测到；本地访问不受影响
+const HOST = process.env.HOST || '0.0.0.0'
 
 class ApiError extends Error {
   constructor(status, code, message) {
